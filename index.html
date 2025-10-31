@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perkenalan Mahasiswa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Quicksand:wght@500&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #f7f1ff, #e9e1f9);
+            color: #4b3b65;
+            margin: 0;
+            overflow-y: auto;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Background Particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .star {
+            width: 8px;
+            height: 8px;
+            background-color: #d4bfff;
+            box-shadow: 0 0 10px #c4a6ff;
+            animation-duration: 8s;
+        }
+
+        .cat {
+            width: 32px;
+            height: 32px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/616/616408.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: catMove 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: translateY(-15px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes catMove {
+            0% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(50px) rotate(5deg);
+            }
+
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+        }
+
+        /* Container utama */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            margin: 80px auto;
+            padding: 60px;
+            max-width: 750px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(150, 123, 200, 0.2);
+            z-index: 5;
+            position: relative;
+            animation: fadeIn 1.3s ease-out;
+        }
+
+        .container img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #e0cffc;
+            animation: floatImg 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 30px;
+            color: #6b4ca5;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Tombol info */
+        .info {
+            font-size: 18px;
+            margin: 15px 0;
+            background-color: #eaddff;
+            color: #5a4689;
+            padding: 14px 25px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            box-shadow: 0 3px 8px rgba(100, 85, 150, 0.1);
+        }
+
+        .info:hover {
+            background-color: #d8c4f8;
+            transform: scale(1.03);
+        }
+
+        .hidden {
+            display: none;
+            font-size: 17px;
+            color: #4d3e75;
+            margin-top: 10px;
+            background: #f6f1ff;
+            padding: 10px;
+            border-radius: 15px;
+            transition: 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(200, 180, 255, 0.15);
+            animation: fadeIn 0.6s ease;
+        }
+
+        .btn-tentang {
+            background-color: #cbb4ff;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            margin-top: 35px;
+            cursor: pointer;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 10px rgba(150, 110, 220, 0.25);
+        }
+
+        .btn-tentang:hover {
+            background-color: #b39af5;
+            transform: scale(1.07);
+        }
+
+        .biodata {
+            display: none;
+            margin-top: 25px;
+            font-size: 16px;
+            color: #5a4689;
+            line-height: 1.7;
+            background: #f5efff;
+            padding: 20px 25px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 10px rgba(180, 160, 240, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        footer {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 14px;
+            color: #776a9f;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatImg {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 40px 25px;
+            }
+
+            .container img {
+                width: 140px;
+                height: 140px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Partikel Latar -->
+    <div class="particle star" style="top: 10%; left: 25%;"></div>
+    <div class="particle star" style="top: 70%; left: 80%;"></div>
+    <div class="particle star" style="top: 85%; left: 40%;"></div>
+    <!-- <div class="particle cat" style="top: 60%; left: 10%;"></div>
+    <div class="particle cat" style="top: 30%; left: 75%;"></div> -->
+
+    <!-- Isi Utama -->
+    <div class="container">
+        <img src="gambar.jpg" alt="Foto Mahasiswa">
+        <h1>🐾 Proyek Aplikasi Sederhana 🐱</h1>
+
+        <div class="info" onclick="toggleInfo('nama')">Nama</div>
+        <div id="nama" class="hidden">Dewi Massitoh Trimuji </div>
+
+        <div class="info" onclick="toggleInfo('nim')">NIM</div>
+        <div id="nim" class="hidden">230411100091</div>
+
+        <div class="info" onclick="toggleInfo('prodi')">Program Studi</div>
+        <div id="prodi" class="hidden">Teknik Informatika</div>
+
+        <div class="info" onclick="toggleInfo('jurusan')">Fakultas</div>
+        <div id="jurusan" class="hidden">Teknik</div>
+
+        <div class="info" onclick="toggleInfo('univ')">Universitas</div>
+        <div id="univ" class="hidden">Universitas Trunojoyo Madura</div>
+
+        <div class="info" onclick="toggleInfo('hobi')">Hobi</div>
+        <div id="hobi" class="hidden">Memasak,Membaca dan bermain dengan kucing 🐾</div>
+
+        <div class="info" onclick="toggleInfo('favColor')">Warna Favorit</div>
+        <div id="favColor" class="hidden">Abu-Abu dan Ungu</div>
+
+        <div class="info" onclick="toggleInfo('motto')">Motto Hidup</div>
+        <div id="motto" class="hidden">"Be soft but strong, kind but wise." 🌷</div>
+
+        <div class="info" onclick="toggleInfo('dream')">Cita-cita</div>
+        <div id="dream" class="hidden">Menjadi orang yang sukses 💻✨</div>
+
+        <button class="btn-tentang" onclick="toggleBiodata()">✨ Tentang Saya ✨</button>
+        <div id="biodata" class="biodata">
+            Halo! Aku <b>Dewi Massitoh Trimuji</b>, mahasiswi <b>Teknik Informatika</b> di Universitas Trunojoyo Madura.
+            Aku suka hal-hal yang berbau desain dan teknologi dengan sentuhan feminin — warna pastel, font lucu, dan
+            animasi halus.
+            Aku penyayang kucing 🐱 dan suka belajar hal baru terutama di bidang kreatif dan digital.
+            Harapanku, aku bisa menjadi perempuan inspiratif yang bisa berkontribusi lewat teknologi dan desain 💜✨
+        </div>
+    </div>
+
+    <footer>© 2025 — Dibuat dengan oleh Dewi Massitoh Trimuji</footer>
+
+    <script>
+        function toggleInfo(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleBiodata() {
+            const bio = document.getElementById("biodata");
+            bio.style.display = bio.style.display === "block" ? "none" : "block";
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        }
+    </script>
+</body>
+
+</html>
